@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class SensorDataController {
     StreamDataService streamDataService;
 
-    @PostMapping("/data")
+    @PostMapping("/write")
     public ResponseEntity<?> sensorData(@RequestBody @Valid SensorData sensorData){
         streamDataService.publish(sensorData);
         return ResponseEntity.accepted().build();
