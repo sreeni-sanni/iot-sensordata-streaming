@@ -70,7 +70,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
+        log.info("URL: {}", request.getRequestURI());
         if ((request.getRequestURI().startsWith("/api/v1/auth/token") ||
                 request.getRequestURI().startsWith("/actuator/health") ||
                 request.getRequestURI().startsWith(SWAGGER_UI) ||

@@ -70,7 +70,8 @@ public class SecurityConfiguration {
     }
 
     private static final String[] AUTH_WHITELIST = {"/api/v1/auth/token",
-            "/swagger-ui/",
-            "/v3/api-docs/",
+            "/swagger-ui/**",
+            "swagger-ui/index.html",
+            "/v3/api-docs/**",
             "/actuator/health"};
 }

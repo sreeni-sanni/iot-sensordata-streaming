@@ -12,7 +12,7 @@ public class Constants {
     public static final String BEARER="Bearer ";
     public static final String TOKEN_MISSING = "Authorization code is missing in the request";
     public static final String AUTH_TOKEN = "/auth/token";
-    public static final String SWAGGER_UI="/swagger-ui/";
+    public static final String SWAGGER_UI="/swagger-ui";
     public static final String SWAGGER_V3_API="/v3/api-docs";
     public static final String USER_NOT_FOUND="The specified username was not found. Please check the username and try again.";
     public static final String SENSOR_NAME ="sensorName";
