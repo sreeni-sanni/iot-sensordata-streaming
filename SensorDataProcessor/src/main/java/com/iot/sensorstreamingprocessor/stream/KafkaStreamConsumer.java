@@ -25,7 +25,6 @@ public class KafkaStreamConsumer {
     @Bean
     public KStream<String, String> process(StreamsBuilder streamBuilder) {
         KStream<String, String> kStream = streamBuilder.stream(TOPIC);
-        log.info("streaming sensor data");
         kStream.filter((key, value) -> value != null && !value.isBlank())
                 .mapValues(this::parseSensorData)
                 .filter((key, sensor) -> sensor != null)
@@ -35,7 +34,6 @@ public class KafkaStreamConsumer {
 
     private SensorData parseSensorData(String sensorData) {
         try {
-            log.info("Parsing SensorData: {}", sensorData);
             return objectMapper.readValue(sensorData, SensorData.class);
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());

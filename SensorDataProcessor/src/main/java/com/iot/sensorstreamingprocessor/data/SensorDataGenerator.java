@@ -16,6 +16,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+    /*
+    SensorDataGenerator will genearte simulated data for THERMOSTAT HEART_RATE_METER FUEL_READING sensors
+     */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -29,7 +32,6 @@ public class SensorDataGenerator {
     ScheduledFuture<?> task;
 
     private void generateData() {
-        log.info("Generating data...");
         String sensorName = SENSOR_NAMES[RANDOM.nextInt(SENSOR_NAMES.length)];
         MetricType metric = generateMetricType(sensorName);
         Double metricValue = generateMetricValue(metric);
