@@ -1,7 +1,7 @@
 package com.iot.streamingprocessor.controller;
 
 import com.iot.streamingprocessor.model.Event;
-import com.iot.streamingprocessor.service.StreamDataService;
+import com.iot.streamingprocessor.service.StreamingProcessorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1")
 public class SensorDataController {
-    StreamDataService streamDataService;
+    StreamingProcessorService streamDataService;
 
     @PostMapping("/write")
     public ResponseEntity<?> sensorData(@RequestBody @Valid Event event){

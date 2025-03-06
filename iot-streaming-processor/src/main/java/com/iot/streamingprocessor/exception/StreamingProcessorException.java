@@ -2,11 +2,11 @@ package com.iot.streamingprocessor.exception;
 
 import java.io.Serial;
 
-public class SensorDataProcessorException extends RuntimeException{
+public class StreamingProcessorException extends RuntimeException{
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public SensorDataProcessorException(String message){
+    public StreamingProcessorException(String message){
         super(message);
     }
 }

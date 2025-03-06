@@ -3,7 +3,7 @@ package com.iot.streamingprocessor.data;
 import com.iot.streamingprocessor.constants.Constants;
 import com.iot.streamingprocessor.model.MetricType;
 import com.iot.streamingprocessor.model.Event;
-import com.iot.streamingprocessor.service.StreamDataService;
+import com.iot.streamingprocessor.service.StreamingProcessorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 public class SensorDataGenerator {
 
-    private final StreamDataService streamDataService;
+    private final StreamingProcessorService streamDataService;
     private static final String[] SENSOR_NAMES = Constants.SENSOR_NAMES;
     private static final Random RANDOM = new Random();
 

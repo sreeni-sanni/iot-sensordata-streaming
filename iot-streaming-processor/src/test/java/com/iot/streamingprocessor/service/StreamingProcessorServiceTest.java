@@ -2,7 +2,7 @@ package com.iot.streamingprocessor.service;
 
 import com.iot.streamingprocessor.model.Event;
 import com.iot.streamingprocessor.model.MetricType;
-import com.iot.streamingprocessor.service.impl.StreamDataServiceImpl;
+import com.iot.streamingprocessor.service.impl.StreamingProcessorServiceImpl;
 import com.iot.streamingprocessor.stream.KafkaStreamProducer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,10 +13,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class StreamDataServiceTest {
+public class StreamingProcessorServiceTest {
 
     @InjectMocks
-    StreamDataServiceImpl streamDataService;
+    StreamingProcessorServiceImpl streamDataService;
     @Mock
     KafkaStreamProducer sensorDataKafkaProducer;
 

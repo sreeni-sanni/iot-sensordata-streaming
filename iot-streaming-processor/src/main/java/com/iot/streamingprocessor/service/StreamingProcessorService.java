@@ -2,6 +2,6 @@ package com.iot.streamingprocessor.service;
 
 import com.iot.streamingprocessor.model.Event;
 
-public interface StreamDataService {
+public interface StreamingProcessorService {
     void publish(Event event);
 }

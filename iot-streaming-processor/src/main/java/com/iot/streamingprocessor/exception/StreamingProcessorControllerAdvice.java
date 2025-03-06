@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @ControllerAdvice
-public class SensorDataStreamingControllerAdvice {
+public class StreamingProcessorControllerAdvice {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception exception, WebRequest webRequest) {
@@ -21,8 +21,8 @@ public class SensorDataStreamingControllerAdvice {
         return ResponseEntity.internalServerError().body(getErrorDetails(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest));
     }
 
-    @ExceptionHandler(SensorDataProcessorException.class)
-    public ResponseEntity<ErrorResponse> handleSensorDataApiException(SensorDataProcessorException exception, WebRequest webRequest) {
+    @ExceptionHandler(StreamingProcessorException.class)
+    public ResponseEntity<ErrorResponse> handleSensorDataApiException(StreamingProcessorException exception, WebRequest webRequest) {
         log.error(exception.getMessage(), exception);
         return ResponseEntity.badRequest().body(getErrorDetails(exception.getMessage(), HttpStatus.BAD_REQUEST, webRequest));
     }

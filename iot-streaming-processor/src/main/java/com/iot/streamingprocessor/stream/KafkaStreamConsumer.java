@@ -3,7 +3,7 @@ package com.iot.streamingprocessor.stream;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iot.streamingprocessor.model.Event;
-import com.iot.streamingprocessor.repository.SensorDataRepository;
+import com.iot.streamingprocessor.repository.StreamingProcessorRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +20,7 @@ import static com.iot.streamingprocessor.constants.Constants.TOPIC;
 public class KafkaStreamConsumer {
 
     private final ObjectMapper objectMapper;
-    private final SensorDataRepository sensorDataRepository;
+    private final StreamingProcessorRepository sensorDataRepository;
 
     @Bean
     public KStream<String, String> process(StreamsBuilder streamBuilder) {
