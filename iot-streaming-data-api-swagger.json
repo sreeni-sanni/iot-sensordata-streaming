@@ -1,0 +1,287 @@
+{
+	"openapi": "3.1.0",
+	"info": {
+		"title": "Sensor Streaming Data API",
+		"description": "This API provides real-time streaming and historical data of sensor reading min,max,avg amd median values. ",
+		"contact": {
+			"name": "API Support",
+			"url": "http://example.com/contact",
+			"email": "support@example.com"
+		},
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://springdoc.org"
+		},
+		"version": "1.0.0"
+	},
+	"externalDocs": {
+		"description": "Full Documentation",
+		"url": "http://example.com/docs"
+	},
+	"servers": [
+		{
+			"url": "http://localhost:8080",
+			"description": "iot-streaming-data-api"
+		}
+	],
+	"paths": {
+		"/api/v1/min": {
+			"post": {
+				"tags": [
+					"sensor-stream-data-controller"
+				],
+				"operationId": "getMinSensorValue",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SensorDataRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/SensorMinResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/median": {
+			"post": {
+				"tags": [
+					"sensor-stream-data-controller"
+				],
+				"operationId": "getMedianSensorValue",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SensorDataRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/SensorMedianResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/max": {
+			"post": {
+				"tags": [
+					"sensor-stream-data-controller"
+				],
+				"operationId": "getMaxSensorValue",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SensorDataRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/SensorMaxResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/average": {
+			"post": {
+				"tags": [
+					"sensor-stream-data-controller"
+				],
+				"operationId": "getAverageSensorValue",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SensorDataRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/SensorAvgResponse"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/auth/token": {
+			"post": {
+				"tags": [
+					"auth-controller"
+				],
+				"operationId": "getToken",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AuthRequest"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"*/*": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"SensorDataRequest": {
+				"type": "object",
+				"properties": {
+					"sensorNames": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"endDate": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"endDate",
+					"startDate"
+				]
+			},
+			"SensorMinResponse": {
+				"type": "object",
+				"properties": {
+					"sensorName": {
+						"type": "string"
+					},
+					"minValue": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"SensorMedianResponse": {
+				"type": "object",
+				"properties": {
+					"sensorName": {
+						"type": "string"
+					},
+					"medianValue": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"SensorMaxResponse": {
+				"type": "object",
+				"properties": {
+					"sensorName": {
+						"type": "string"
+					},
+					"maxValue": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"SensorAvgResponse": {
+				"type": "object",
+				"properties": {
+					"sensorName": {
+						"type": "string"
+					},
+					"avgValue": {
+						"type": "number",
+						"format": "double"
+					}
+				}
+			},
+			"AuthRequest": {
+				"type": "object",
+				"properties": {
+					"username": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"password",
+					"username"
+				]
+			}
+		},
+		"securitySchemes": {
+			"api": {
+				"type": "http",
+				"name": "api",
+				"scheme": "bearer",
+				"bearerFormat": "jwt"
+			}
+		}
+	}
+}

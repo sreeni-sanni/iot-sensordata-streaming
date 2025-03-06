@@ -1,6 +1,12 @@
-FROM openjdk:17-alpine
+FROM maven:3.9.6-eclipse-temurin-17 as build
+WORKDIR /appdd
+COPY iot-streaming-processor/pom.xml .
+COPY iot-streaming-processor/src ./src
+RUN mvn clean install
 
-EXPOSE 8090
-WORKDIR app
-COPY target/iot-streaming-processor-0.0.1-SNAPSHOT.jar app/iot-streaming-processor.jar
-CMD ["java","-jar","app/iot-streaming-processor.jar"]
+
+FROM eclipse-temurin:17 as builder
+COPY --from=build /appdd/target/*.jar appData/iot-streaming-processor.jar
+WORKDIR /appData
+EXPOSE 8080
+CMD ["java","-jar","iot-streaming-processor.jar"]

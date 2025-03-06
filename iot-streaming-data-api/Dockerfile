@@ -1,6 +1,13 @@
-FROM openjdk:17-alpine
+FROM maven:3.9.6-eclipse-temurin-17 as build
+WORKDIR /appdd
+COPY iot-streaming-data-api/pom.xml .
+COPY iot-streaming-data-api/src ./src
+RUN mvn clean install
+
+
+FROM eclipse-temurin:17 as builder
+COPY --from=build /appdd/target/*.jar appData/iot-streaming-data-api.jar
+WORKDIR /appData
 
 EXPOSE 8080
-WORKDIR app
-COPY target/SensorDataAPI-0.0.1-SNAPSHOT.jar app/sensordataapi.jar
-CMD ["java","-jar","app/sensordataapi.jar"]
+CMD ["java","-jar","iot-streaming-data-api.jar"]

@@ -1,7 +1,0 @@
-services:
-  iot-sensor-data-api:
-    build: ./
-    container_name: sendordataapi
-    ports:
-      - 8080:8080
-

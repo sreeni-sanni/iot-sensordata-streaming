@@ -1,6 +1,6 @@
 package com.iot.streamingprocessor.controller;
 
-import com.iot.streamingprocessor.model.SensorData;
+import com.iot.streamingprocessor.model.Event;
 import com.iot.streamingprocessor.service.StreamDataService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -17,8 +17,8 @@ public class SensorDataController {
     StreamDataService streamDataService;
 
     @PostMapping("/write")
-    public ResponseEntity<?> sensorData(@RequestBody @Valid SensorData sensorData){
-        streamDataService.publish(sensorData);
+    public ResponseEntity<?> sensorData(@RequestBody @Valid Event event){
+        streamDataService.publish(event);
         return ResponseEntity.ok("Success");
     }
 }

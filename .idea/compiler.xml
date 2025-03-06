@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sensor-streaming-processor" />
         <module name="iot-streaming-data-api" />
+        <module name="iot-streaming-processor" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SensorDataAPI" options="-parameters" />
       <module name="iot-streaming-data-api" options="-parameters" />
+      <module name="iot-streaming-processor" options="-parameters" />
       <module name="sensor-streaming-processor" options="-parameters" />
     </option>
   </component>

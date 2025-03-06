@@ -25,6 +25,8 @@ services:
       - zookeeper
     ports:
       - "9092:9092"
+    expose:
+      - "9093"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
@@ -41,12 +43,30 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
+  init-kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - kafka
+    entrypoint: [ '/bin/sh', '-c' ]
+    networks:
+      - kafka_network
+    command: |
+      "
+      # blocks until kafka is reachable
+      kafka-topics --bootstrap-server kafka:9093 --list
+      echo -e 'Creating kafka topics'
+      kafka-topics --bootstrap-server kafka:9093 --create --if-not-exists --topic sensordata --replication-factor 1 --partitions 1
+      echo -e 'Successfully created the following topics:'
+      kafka-topics --bootstrap-server kafka:9093 --list
+      "    
 
   iot-stream-processor:
     depends_on:
       kafka:
         condition: service_healthy
-    build: ./
+    build:
+      dockerfile: iot-streaming-processor/Dockerfile
+      context: .
     container_name: streamprocessor
     ports:
       - 8090:8090
@@ -55,6 +75,19 @@ services:
       SPRING_DATA_MONGODB_PORT: 27017
       SPRING_DATA_MONGODB_DATABASE: sensordata
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9093
+    networks:
+      - kafka_network
+  iot-sensor-data-api:
+    build:
+      dockerfile: iot-streaming-data-api/Dockerfile
+      context: .
+    container_name: sendordataapi
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongodb
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: sensordata
     networks:
       - kafka_network
 networks:

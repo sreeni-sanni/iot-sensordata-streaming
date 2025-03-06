@@ -2,7 +2,7 @@ package com.iot.streamingprocessor.data;
 
 import com.iot.streamingprocessor.constants.Constants;
 import com.iot.streamingprocessor.model.MetricType;
-import com.iot.streamingprocessor.model.SensorData;
+import com.iot.streamingprocessor.model.Event;
 import com.iot.streamingprocessor.service.StreamDataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +38,7 @@ public class SensorDataGenerator {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS");
         String timestamp = LocalDateTime.now().format(format);
 
-        SensorData sensorData = SensorData.builder()
+        Event sensorData = Event.builder()
                 .sensorName(sensorName)
                 .metricType(metric)
                 .metricValue(metricValue)

@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SensorDataProcessorApplication {
+public class StreamingDataProcessorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SensorDataProcessorApplication.class, args);
+		SpringApplication.run(StreamingDataProcessorApplication.class, args);
 	}
 
 }

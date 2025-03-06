@@ -2,7 +2,7 @@ package com.iot.streamingprocessor.stream;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.iot.streamingprocessor.model.SensorData;
+import com.iot.streamingprocessor.model.Event;
 import com.iot.streamingprocessor.repository.SensorDataRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,10 +32,10 @@ public class KafkaStreamConsumer {
         return kStream;
     }
 
-    private SensorData parseSensorData(String sensorData) {
+    private Event parseSensorData(String sensorData) {
         try {
             log.info("streaming started   {}",sensorData);
-            return objectMapper.readValue(sensorData, SensorData.class);
+            return objectMapper.readValue(sensorData, Event.class);
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());
         }
