@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "2d8ed7dd-fbb8-4e15-893e-cd01e154db33",
+		"name": "IoT-Streaming-Data-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32920860"
+	},
+	"item": [
+		{
+			"name": "AVG",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXRhc3RyZWFtIiwiaWF0IjoxNzQxMDc4NzU4LCJleHAiOjE3NDEwODA1NTh9.Ufz6G5coX3aeMCyNxG0y0J_SGmjVjjecKes8Yif5EvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"sensorNames\": [\"FUEL_READING\",\"THERMOSTAT\"],\r\n        \"startDate\": \"2025-03-03T18:45:51.611\",\r\n        \"endDate\":\"2025-03-03T18:46:10.616\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/average",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"average"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Median",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXRhc3RyZWFtIiwiaWF0IjoxNzQxMDc4NzU4LCJleHAiOjE3NDEwODA1NTh9.Ufz6G5coX3aeMCyNxG0y0J_SGmjVjjecKes8Yif5EvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"sensorNames\": [\"FUEL_READING\",\"THERMOSTAT\"],\r\n        \"startDate\": \"2025-03-03T18:45:51.611\",\r\n        \"endDate\":\"2025-03-03T18:46:10.616\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/median",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"median"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Min",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXRhc3RyZWllllFtIiwiaWF0IjoxNzQxMDc4NzU4LCJleHAiOjE3NDEwODA1NTh9.Ufz6G5coX3aeMCyNxG0y0J_SGmjVjjecKes8Yif5EvY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"sensorNames\": [\"FUEL_READING\",\"THERMOSTAT\"],\r\n        \"startDate\": \"2025-03-03T18:45:51.611\",\r\n        \"endDate\":\"2025-03-03T18:46:10.616\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/min",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"min"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Max",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkYXRhc3RyZWFtIiwiaWF0IjoxNzQxMjAxMTcwLCJleHAiOjE3NDEyMDI5NzB9.chn5XoqejHVlMRvoZtwJRB_AygXb4DLTUUdx5-E9ExM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"sensorNames\": [\"FUEL_READING\",\"THERMOSTAT\"],\r\n        \"startDate\": \"2025-05-03T19:00:51.611\",\r\n        \"endDate\":\"2025-05-0T20:00:10.616\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/max",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"max"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"datastream\",\r\n    \"password\":\"datastream\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

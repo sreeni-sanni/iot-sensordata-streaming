@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "0bcf70ef-47b1-4e6f-aef3-b554b0f4db6b",
+		"name": "IoT-Streaming-Processor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32920860"
+	},
+	"item": [
+		{
+			"name": "start",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/generator/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"generator",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stop",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/generator/stop",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"generator",
+						"stop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SendData",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n  {\r\n    \"metricType\": \"HEART_RATE\",\r\n    \"metricValue\": 87,\r\n    \"sensorName\": \"HEART_RATE_METER\",\r\n    \"timeStamp\": \"2025-03-03T18:45:51.611\"\r\n  }\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/write",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"write"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
