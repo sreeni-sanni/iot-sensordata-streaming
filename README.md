@@ -41,14 +41,14 @@ docker ps
 ## API Endpoints
 * ****
 ## IoT Streaming Processor
-### 1.Start generate Simulated data
+### 1.Start Generate Simulated Data
 - **Endpoint:** **GET** 'http://localhost:8090/generator/start`
 - **Description:** This endpoint schedule the generation of test simulated data and sends it to kafka.
 - **Response Body:**
 ```
  The Stream Data Generator started successfully!
 ```
-### 2.Stop generating Simulated data
+### 2.Stop Generating Simulated Data
 - **Endpoint:** **GET** 'http://localhost:8090/generator/stop`
 - **Description:** This endpoint stops the scheduler from generating test simulated data.
 - **Response Body:**
