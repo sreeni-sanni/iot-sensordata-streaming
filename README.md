@@ -23,23 +23,40 @@
 ## Getting Started
 * ****
 ### Requirements
-- Docker
+- Docker (MongoDB,kafka)
 - Java 17
 ### Build & Run
-- Run docker compose command to build and deploy both applications.
-
-  Note: Build and deploying all application in single docker compose file for assignment purpose. 
-
+- To build and deploy **iot-streaming-data-api** and **iot-streaming-processor** applications using Docker Compose, run following command:
 ```
 docker-compose -f "docker-compose.yml" up --build -d
 ```
-All containers are running and can see them as below :
+Once all containers are running, you can verify them using:
+```
+docker ps
+```
 
  ![img.png](img.png)
 * ****
 
 ## API Endpoints
 * ****
+## iot-streaming-processor
+### 1.Start generate Simulated data
+- **Endpoint:** **GET** 'http://localhost:8090/generator/start`
+- **Description:** This endpoint will schedule to generate test simulated data and send it to kafka.
+- **Response Body:**
+```
+ The Stream Data Generator started successfully!
+```
+### 2.Stop generating Simulated data
+- **Endpoint:** **GET** 'http://localhost:8090/generator/stop`
+- **Description:** This endpoint will stop scheduler to generate test simulated data.
+- **Response Body:**
+```
+ The Stream Data Generator stopped successfully!
+```
+
+## iot-streaming-data-api
 ### Base URL
 - `http://localhost:8080/`
 - Swagger-UI URL 'http://localhost:8080/swagger-ui/index.html'
@@ -73,20 +90,20 @@ Authorization: Bearer <JWT_TOKEN>
 ```json
 {
  "sensorNames": ["FUEL_READING","THERMOSTAT"],
- "startDate": "2025-03-03T18:45:51.611",
- "endDate":"2025-03-03T18:46:10.616"
+ "startDate": "2025-03-07T09:45:09.012",
+ "endDate":"2025-03-07T09:55:09.012"
 }
 ```
 - **Response:**
 ```json
 [
  {
-  "sensorName": "FUEL_READING",
-  "MinValue": 2.5
-},
- {
   "sensorName": "THERMOSTAT",
-  "MinValue": 1
+  "minValue": 0.5847520641830806
+ },
+ {
+  "sensorName": "FUEL_READING",
+  "minValue": 10.0
  }
 ]
 ```
@@ -97,20 +114,20 @@ Authorization: Bearer <JWT_TOKEN>
 ```json
 {
  "sensorNames": ["FUEL_READING","THERMOSTAT"],
- "startDate": "2025-03-03T18:45:51.611",
- "endDate":"2025-03-03T18:46:10.616"
+ "startDate": "2025-03-07T09:45:09.012",
+ "endDate":"2025-03-07T09:55:09.012"
 }
 ```
 - **Response:**
 ```json
 [
  {
-  "sensorName": "FUEL_READING",
-  "maxValue": 2.5
-},
- {
   "sensorName": "THERMOSTAT",
-  "maxValue": 1
+  "maxValue": 98.84306027087632
+ },
+ {
+  "sensorName": "FUEL_READING",
+  "maxValue": 100.0
  }
 ]
 ```
@@ -120,21 +137,25 @@ Authorization: Bearer <JWT_TOKEN>
 - **Request Body:**
 ```json
 {
- "sensorNames": ["FUEL_READING","THERMOSTAT"],
- "startDate": "2025-03-03T18:45:51.611",
- "endDate":"2025-03-03T18:46:10.616"
+ "sensorNames": ["FUEL_READING","THERMOSTAT","HEART_RATE_METER"],
+ "startDate": "2025-03-07T09:45:09.012",
+ "endDate":"2025-03-07T09:55:09.012"
 }
 ```
 - **Response:**
 ```json
 [
  {
-  "sensorName": "FUEL_READING",
-  "avgValue": 2.5
-},
+  "sensorName": "HEART_RATE_METER",
+  "avgValue": 86.5
+ },
  {
   "sensorName": "THERMOSTAT",
-  "avgValue": 1
+  "avgValue": 51.107466969495114
+ },
+ {
+  "sensorName": "FUEL_READING",
+  "avgValue": 54.27272727272727
  }
 ]
 ```
@@ -145,8 +166,8 @@ Authorization: Bearer <JWT_TOKEN>
 ```json
 {
  "sensorNames": ["FUEL_READING","THERMOSTAT"],
- "startDate": "2025-03-03T18:45:51.611",
- "endDate":"2025-03-03T18:46:10.616"
+ "startDate": "2025-03-07T09:45:09.012",
+ "endDate":"2025-03-07T09:55:09.012"
 }
 ```
 - **Response:**
@@ -154,11 +175,11 @@ Authorization: Bearer <JWT_TOKEN>
 [
  {
   "sensorName": "FUEL_READING",
-  "medianValue": 2.5
-},
+  "medianValue": 49.80221068945726
+ },
  {
   "sensorName": "THERMOSTAT",
-  "medianValue": 1
+  "medianValue": 49.80221068945726
  }
 ]
 ```

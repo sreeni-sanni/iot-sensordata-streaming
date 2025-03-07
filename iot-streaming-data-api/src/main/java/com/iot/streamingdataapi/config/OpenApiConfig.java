@@ -31,12 +31,12 @@ public class OpenApiConfig {
                         .description("Full Documentation")
                         .url("http://example.com/docs"))
                 .components( new Components().addSecuritySchemes(
-                        "api",
+                        "bearerAuth",
                         new SecurityScheme()
                                 .scheme("bearer")
                                 .type(SecurityScheme.Type.HTTP)
                                 .bearerFormat("jwt")
-                                .name("api")
+                                .name("bearerAuth")
                 ));
     }
 }
