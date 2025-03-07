@@ -1,10 +1,10 @@
-#                         IOT-Streaming-Sensor-Data
+#                         IoT Streaming SensorData
 * ****
 ## Overview
 * ****
- This project is a real-time IOT sensor data processing pipeline built using Spring Boot, Kafka and MongoDB.
+ This project is a real-time IoT sensor data processing pipeline built using Spring Boot, Kafka and MongoDB.
  The application:
-- Simulates multiple IOT devices sending sensor readings every second.
+- Simulates multiple IoT devices sending sensor readings every second.
 - Stream and process data using Kafka (Streams).
 - Store sensor reading in MongoDB
 - Provides a REST API to query sensor data(min/max/avg reading for specific or group of sensors for a time range)
@@ -40,23 +40,23 @@ docker ps
 
 ## API Endpoints
 * ****
-## iot-streaming-processor
+## IoT Streaming Processor
 ### 1.Start generate Simulated data
 - **Endpoint:** **GET** 'http://localhost:8090/generator/start`
-- **Description:** This endpoint will schedule to generate test simulated data and send it to kafka.
+- **Description:** This endpoint schedule the generation of test simulated data and sends it to kafka.
 - **Response Body:**
 ```
  The Stream Data Generator started successfully!
 ```
 ### 2.Stop generating Simulated data
 - **Endpoint:** **GET** 'http://localhost:8090/generator/stop`
-- **Description:** This endpoint will stop scheduler to generate test simulated data.
+- **Description:** This endpoint stops the scheduler from generating test simulated data.
 - **Response Body:**
 ```
  The Stream Data Generator stopped successfully!
 ```
 
-## iot-streaming-data-api
+## IoT Streaming Data API
 ### Base URL
 - `http://localhost:8080/`
 - Swagger-UI URL 'http://localhost:8080/swagger-ui/index.html'
